@@ -18,5 +18,8 @@ import org.auth.auth.model.user.UserEntity;
 @DiscriminatorValue("ADMIN")
 
 public class Admin extends UserEntity {
+    public static AdminBuilder builder() {
+        return new AdminBuilder();
+    }
 
 }
