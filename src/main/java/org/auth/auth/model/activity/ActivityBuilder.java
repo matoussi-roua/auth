@@ -1,8 +1,10 @@
 package org.auth.auth.model.activity;
 
 import jakarta.persistence.Column;
+import org.auth.auth.model.contact.Contact;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class ActivityBuilder {
     private Long id;
@@ -11,6 +13,8 @@ public class ActivityBuilder {
     private String subject;
     private String note;
     private String documents;
+    private List<Contact> participants;
+
 
     public ActivityBuilder id(Long id) {
         this.id = id;
@@ -46,7 +50,13 @@ public class ActivityBuilder {
         return this;
 
     }
+
+    public ActivityBuilder participants(List<Contact> participants) {
+        this.participants = participants;
+        return this;
+    }
+
     public Activity build() {
-        return new Activity(id, date, type, subject, note, documents);
+        return new Activity(id, date, type, subject, note, documents, participants);
     }
 }
