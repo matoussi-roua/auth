@@ -3,8 +3,10 @@ package org.auth.auth.model.admin;
 import jakarta.persistence.Column;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class AdminBuilder {
+    private UUID id;
     private String firstName;
     private String lastName;
     private String email;
@@ -15,6 +17,11 @@ public class AdminBuilder {
     private boolean accountNonExpired;
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
+
+    public AdminBuilder id(UUID id) {
+        this.id = id;
+        return this;
+    }
 
     public AdminBuilder firstName(String firstName) {
         this.firstName = firstName;
@@ -60,6 +67,7 @@ public class AdminBuilder {
     }
     public Admin build() {
         Admin admin = new Admin();
+        admin.setId(id);
         admin.setFirstName(firstName);
         admin.setLastName(lastName);
         admin.setEmail(email);
