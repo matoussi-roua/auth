@@ -1,6 +1,7 @@
 package org.auth.auth.model.admin;
 
 import jakarta.persistence.Column;
+import org.auth.auth.model.role.Role;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -17,6 +18,7 @@ public class AdminBuilder {
     private boolean accountNonExpired;
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
+    private Role role;
 
     public AdminBuilder id(UUID id) {
         this.id = id;
@@ -65,6 +67,11 @@ public class AdminBuilder {
         this.credentialsNonExpired = credentialsNonExpired;
         return this;
     }
+
+    public AdminBuilder role(Role role) {
+        this.role = role;
+        return this;
+    }
     public Admin build() {
         Admin admin = new Admin();
         admin.setId(id);
@@ -78,6 +85,7 @@ public class AdminBuilder {
         admin.setAccountNonExpired(accountNonExpired);
         admin.setAccountNonLocked(accountNonLocked);
         admin.setCredentialsNonExpired(credentialsNonExpired);
+        admin.setRole(role);
         return admin;
     }
 }
