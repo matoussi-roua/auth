@@ -2,6 +2,7 @@ package org.auth.auth.model.activity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.auth.auth.model.contact.Contact;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -34,6 +35,9 @@ public class Activity {
 
     @Column(name = "documents")
     private String documents;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "activitiesToAttend")
+    private List<Contact> participants;
 
     public static ActivityBuilder builder() {
         return new ActivityBuilder();
