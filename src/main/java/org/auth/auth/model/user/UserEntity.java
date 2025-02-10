@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.auth.auth.model.role.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -14,7 +15,7 @@ import java.util.UUID;
 @Setter
 @ToString
 @Entity
-@Table(name = "user_entity")
+@Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "user_type")
 public abstract class UserEntity implements UserDetails {
@@ -53,6 +54,9 @@ public abstract class UserEntity implements UserDetails {
 
     @Column(name = "is credential_expired")
     private boolean credentialsNonExpired;
+
+    @ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
+    private Role role;
 
     @Override
     public boolean isAccountNonExpired() {

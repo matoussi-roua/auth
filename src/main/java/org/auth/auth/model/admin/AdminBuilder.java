@@ -1,11 +1,13 @@
 package org.auth.auth.model.admin;
 
 import jakarta.persistence.Column;
+import lombok.extern.slf4j.Slf4j;
 import org.auth.auth.model.role.Role;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Slf4j
 public class AdminBuilder {
     private UUID id;
     private String firstName;
