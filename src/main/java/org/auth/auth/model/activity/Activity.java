@@ -17,7 +17,7 @@ public class Activity {
 
     @Id
     @GeneratedValue
-    @Column(name = "id_activity", nullable = false, updatable = false , unique = true)
+    @Column(name = "id_activity", nullable = false, updatable = false, unique = true)
     private Long id;
 
     @Column(name = "date", nullable = false)
@@ -34,4 +34,8 @@ public class Activity {
 
     @Column(name = "documents")
     private String documents;
+
+    public static ActivityBuilder builder() {
+        return new ActivityBuilder();
+    }
 }
