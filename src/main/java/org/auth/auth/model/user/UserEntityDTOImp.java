@@ -5,7 +5,7 @@ import org.auth.auth.model.role.Role;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public record UserEntityDTOImp(UUID id, String firstName, String lastName, String email, String password,
+public record UserEntityDTOImp(UUID id, String firstName, String lastName, String email,
                                boolean enabled, LocalDateTime createdAt, LocalDateTime updatedAt,
                                Role role) implements UserEntityDTO {
 
@@ -28,11 +28,6 @@ public record UserEntityDTOImp(UUID id, String firstName, String lastName, Strin
     @Override
     public String getEmail() {
         return this.email;
-    }
-
-    @Override
-    public String getPassword() {
-        return this.password;
     }
 
     @Override

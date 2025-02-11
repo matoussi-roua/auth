@@ -10,7 +10,6 @@ public interface UserEntityDTO {
     String getFirstName();
     String getLastName();
     String getEmail();
-    String getPassword();
     LocalDateTime getCreatedAt();
     LocalDateTime getUpdatedAt();
     Boolean isEnabled();

@@ -13,7 +13,6 @@ public class UserEntityDTOMapper implements Function<UserEntity, UserEntityDTOIm
                 userEntity.getFirstName(),
                 userEntity.getLastName(),
                 userEntity.getEmail(),
-                userEntity.getPassword(),
                 userEntity.isEnabled(),
                 userEntity.getCreatedAt(),
                 userEntity.getUpdatedAt(),
