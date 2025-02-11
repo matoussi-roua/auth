@@ -1,7 +1,10 @@
 package org.auth.auth.service.user;
 
+import org.auth.auth.model.admin.Admin;
+import org.auth.auth.model.admin.AdminDTOMapper;
 import org.auth.auth.model.user.UserEntity;
 import org.auth.auth.model.user.UserEntityDTO;
+import org.auth.auth.model.user.UserEntityDTOImp;
 import org.auth.auth.model.user.UserEntityDTOMapper;
 import org.auth.auth.repository.UserEntityRepository;
 import org.springframework.stereotype.Service;
@@ -12,10 +15,12 @@ import java.util.UUID;
 public class UserEntityServiceImpl implements UserEntityService {
     private final UserEntityRepository userEntityRepository;
     private final UserEntityDTOMapper userEntityDTOMapper;
+    private final AdminDTOMapper adminDTOMapper;
 
-    public UserEntityServiceImpl(UserEntityRepository userEntityRepository, UserEntityDTOMapper userEntityDTOMapper) {
+    public UserEntityServiceImpl(UserEntityRepository userEntityRepository, UserEntityDTOMapper userEntityDTOMapper, AdminDTOMapper adminDTOMapper) {
         this.userEntityRepository = userEntityRepository;
         this.userEntityDTOMapper = userEntityDTOMapper;
+        this.adminDTOMapper = adminDTOMapper;
     }
 
     @Override
@@ -44,7 +49,7 @@ public class UserEntityServiceImpl implements UserEntityService {
     @Override
     public UserEntityDTO mapToDTO(UserEntity userEntity) {
         return switch (userEntity.getClass().getSimpleName()) {
-            case "Admin" -> adminDTOMapper.apply(userEntity);
+            case "Admin" -> adminDTOMapper.apply((Admin) userEntity);
             default -> userEntityDTOMapper.apply(userEntity);
         };
     }
