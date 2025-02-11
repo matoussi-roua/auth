@@ -13,8 +13,6 @@ public abstract class Token {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "token", unique = true, nullable = false)
-    private String token;
     @Column(name = "revoked")
     private Boolean revoked;
     @Column(name = "expired")
