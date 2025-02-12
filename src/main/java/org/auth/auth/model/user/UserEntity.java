@@ -6,10 +6,12 @@ import lombok.Setter;
 import lombok.ToString;
 import org.auth.auth.model.role.Role;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.UUID;
 @Getter
 @Setter
@@ -60,28 +62,28 @@ public abstract class UserEntity implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return accountNonExpired;
+        return this.accountNonExpired;
     }
     @Override
     public boolean isAccountNonLocked() {
-        return accountNonLocked;
+        return this.accountNonLocked;
     }
     @Override
     public boolean isCredentialsNonExpired() {
-        return credentialsNonExpired;
+        return this.credentialsNonExpired;
     }
     @Override
     public boolean isEnabled() {
-        return enabled;
+        return this.enabled;
     }
 
     @Override
     public String getUsername() {
-        return email;
+        return this.email;
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities(){
-        return null;
+        return Collections.singleton(new SimpleGrantedAuthority(role.getName()));
     }
 
 
