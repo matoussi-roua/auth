@@ -2,6 +2,7 @@ package org.auth.auth.model.token;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.auth.auth.model.user.UserEntity;
 
 @Getter
 @Setter
@@ -12,10 +13,13 @@ import lombok.*;
 public abstract class Token {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    protected Long id;
     @Column(name = "revoked")
-    private Boolean revoked;
+    protected Boolean revoked;
     @Column(name = "expired")
-    private Boolean expired;
+    protected Boolean expired;
 
+    @ManyToOne
+    @JoinColumn(name = "token_user_id")
+    protected UserEntity userToken;
 }
