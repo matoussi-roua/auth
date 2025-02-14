@@ -19,6 +19,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return userEntityRepository.fetchUserByEmail(email).orElseThrow(() -> new RuntimeException("Bad credentials"));
+        return userEntityRepository.fetchUserByEmail(email).orElseThrow(() -> new UsernameNotFoundException("Bad credentials"));
     }
 }
