@@ -1,7 +1,7 @@
-package org.auth.auth.security.utility.config;
+package org.auth.auth.security.config;
 
-import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;
+import org.auth.auth.security.jwt.JWTAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -27,7 +27,7 @@ public class SecurityConfig {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers()
+                .requestMatchers("/*")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

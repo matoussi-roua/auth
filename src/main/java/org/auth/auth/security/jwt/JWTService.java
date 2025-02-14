@@ -1,4 +1,4 @@
-package org.auth.auth.service.jwt;
+package org.auth.auth.security.jwt;
 
 import io.jsonwebtoken.Claims;
 import org.springframework.security.core.userdetails.UserDetails;

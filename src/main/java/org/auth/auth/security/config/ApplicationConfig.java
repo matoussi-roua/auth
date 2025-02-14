@@ -1,4 +1,4 @@
-package org.auth.auth.security.utility.config;
+package org.auth.auth.security.config;
 
 import lombok.RequiredArgsConstructor;
 import org.auth.auth.service.auth.CustomUserDetailsService;
